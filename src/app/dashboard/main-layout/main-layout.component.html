@@ -1,0 +1,133 @@
+<div class="overlay" [ngStyle]="{'display':isOpen ? 'block' : 'none'}" (click)="toggleSideMenu()"></div>
+<!-- Top Bar -->
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#navbar-collapse" aria-expanded="false"></a>
+            <a href="javascript:void(0);" (click)="toggleSideMenu()" class="bars"></a>
+            <a class="navbar-brand" routerLink="/main">The List Of Shame</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Call Search -->
+                <!-- <li><a href="javascript:void(0);" class="js-search" data-close="true"><i
+                            class="material-icons">search</i></a>
+                </li> -->
+                <!-- #END# Call Search -->
+                <li class="pull-right">
+                    <a href="javascript:void(0);" class="js-right-sidebar" (click)="logout()">
+                        <i class="material-icons">input</i>
+                    </a>
+                </li>
+                <!-- <li class="pull-right">
+                    <a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i
+                            class="material-icons">more_vert</i>
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- #Top Bar -->
+<section>
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar" [ngClass]="{'side-menu-open': isOpen}">
+        <!-- User Info -->
+        <div class="user-info">
+            <div class="image">
+                <img src="../../../assets/images/user.png" width="48" height="48" alt="User" />
+            </div>
+
+            <div class="info-container">
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{loggedUser.first_name}} {{loggedUser.last_name}}</div>
+                <div class="email">{{loggedUser.email}}</div>
+                <div class="btn-group user-helper-dropdown">
+                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="true">keyboard_arrow_down</i>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="javascript:void(0);" routerLink="settings">
+                                <i class="material-icons">person</i>Profile</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="javascript:void(0);" (click)="logout()">
+                                <i class="material-icons">input</i>
+                                Sign Out
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- #User Info -->
+        <!-- Menu -->
+        <div class="menu">
+            <ul class="list" style="margin-bottom: 200px;" (click)="closeSideMenu()">
+                <li class="header">MAIN NAVIGATION</li>
+                <li routerLinkActive="active">
+                    <a routerLink="dashboard">
+                        <i class="material-icons">home</i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="add-debtor">
+                        <i class="material-icons">person_add</i>
+                        <span>Add Debtor</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="my-listings">
+                        <i class="material-icons">list</i>
+                        <span>My Debtors</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="all-debtors">
+                        <i class="material-icons">library_books</i>
+                        <span>View All Debtors</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="payments">
+                        <i class="material-icons">attach_money</i>
+                        <span>Payments</span>
+                    </a>
+                </li>
+
+                <!-- <li routerLinkActive="active">
+                    <a routerLink="subscriptions">
+                        <i class="material-icons">subscriptions</i>
+                        <span>Subscriptions</span>
+                    </a>
+                </li> -->
+
+                <li routerLinkActive="active">
+                    <a routerLink="settings">
+                        <i class="material-icons">settings_applications</i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active" (click)="logout()">
+                    <a href="javascript: void(0);">
+                        <i class="material-icons">exit_to_app</i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- #Menu -->
+    </aside>
+    <!-- #END# Left Sidebar -->
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
+    </div>
+</section>

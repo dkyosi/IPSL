@@ -1,0 +1,332 @@
+<header>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a class="navbar-brand" routerLink="/">The List of Shame</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->
+                    <li>
+                        <a href="javascript:void(0);" routerLink="/">
+                            HOME
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" routerLink="support">
+                            HELP & SUPPORT
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" routerLink="/auth/register">
+                            GET STARTED
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="btn bg-purple waves-effect login-btn"
+                            routerLink="/auth/login">
+                            LOGIN
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container aa-header-content text-left text-white">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 intro">
+                <h2 class="intro-header mb-4">The List of Shame</h2>
+                <p class="intro-text">A platform that helps protect finances and investments for individuals,
+                    organizations,
+                    companies, and instituitions.</p>
+                <div>
+                    <p class="intro-text">Provides you with:</p>
+                    <ul class="feature-list list-unstyled intro-text">
+                        <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>
+                            <span><strong> &nbsp; Accuracy</strong></span>
+                        </li>
+                        <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>
+                            <strong> &nbsp; Platform for due diligence</strong>
+                        </li>
+                        <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>
+                            <strong> &nbsp; Helps you recover debts</strong>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="intro-text" style="margin-top: 3rem;">
+                    Unlock your way to financial security today!
+                </p>
+
+                <div
+                    style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: left">
+
+                    <!-- <div class="input-group" style="margin-top: 2rem; height: 50px; max-width: 700px;">
+                        <div class="form-line" style="border: none;">
+                            <input type="text" class="form-control date" placeholder="Search for a debtor..."
+                                [(ngModel)]="searchTerm" style="padding: 25px 10px; font-size: 18px;"
+                                (ngModelChange)="searchDebtor()">
+                        </div>
+                        <span class="input-group-addon" style="padding: 0px;">
+                            <button type="button" class="btn btn-lg waves-effect"
+                                style="background: white; margin: 0; height: 50px; margin-bottom: 5px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+                                <i class="material-icons">search</i>
+                            </button>
+                        </span>
+                    </div> -->
+                </div>
+
+                <div class="cta-section">
+                    <button type="button" class="btn bg-purple btn-lg waves-effect" routerLink="/main/add-debtor">LIST A
+                        DEBTOR</button>
+                    &nbsp;
+                    <button type="button" class="btn bg-purple btn-lg waves-effect" routerLink="/main/all-debtors">VIEW
+                        ALL DEBTORS</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<main class="main-section">
+    <div class="top-debtors">
+        <h2>Recent Debtors</h2>
+
+        <div class="card">
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-hover dashboard-task-infos">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Debtor Type</th>
+                                <th>Amount Owed</th>
+                                <th>Description</th>
+                                <th>Time Elapsed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let debtor of debtors; let i = index">
+                                <td> {{i + 1}} </td>
+                                <td>{{ debtor.debtor_name }}</td>
+                                <td>{{ debtor.debtor_type }}</td>
+                                <td>{{ debtor.amount_owed | currency:'KSH. ' }}</td>
+                                <td>{{ debtor.description }}</td>
+                                <td>{{ debtor.time_elapsed }} Months</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div style="display: flex; justify-content: flex-end;"
+                    *ngIf="!isFecthingDebtors && (debtors && debtors.length)">
+                    <button type="button" class="btn bg-purple waves-effect" routerLink="/main/all-debtors">
+                        <span>View All</span>
+                        <i class="material-icons m-l-10">fast_forward</i>
+                    </button>
+                </div>
+
+                <div style="display: flex; justify-content: center;" *ngIf="isFecthingDebtors">
+                    <div class="preloader pl-size-xs">
+                        <div class="spinner-layer pl-purple">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: center;"
+                    *ngIf="!isFecthingDebtors && (!debtors || !debtors.length)">
+                    <div class="alert bg-pink m-5" style="max-width: 600px;">
+                        There are no debtors listed.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<section class="how-it-works">
+    <h2>How Does The List of Shame Work?</h2>
+
+    <div class="works-list">
+        <ul class="list-unstyled">
+            <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>
+                &nbsp; List someone who owes you money whether an individual, company, instituition, or county of
+                government
+            </li>
+            <br>
+            <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>
+                &nbsp; Provide their details and amount owed
+            </li>
+            <br>
+            <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>
+                &nbsp; Pay a listing fee amounting to 3% of the owed amount
+            </li>
+            <br>
+            <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>
+                &nbsp; Publish the listing and let the whole world know about their bad credit score
+            </li>
+            <br>
+            <li class="py-2"><i class="fa fa-check-circle pr-4" aria-hidden="true"></i>
+                &nbsp; This will prompt them to pay up and then you can proceed to unlist them
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="faqs">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="panel-group faq-list" id="accordion_1" role="tablist" aria-multiselectable="true">
+
+        <div class="panel panel-col">
+            <div class="panel-heading" role="tab" id="faq-1-heading">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseOne"
+                        aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                        <i class="material-icons">arrow_drop_down_circle</i> How do I get started with The List of
+                        Shame?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-1-heading"
+                aria-expanded="false" style="height: 0px;">
+                <div class="panel-body">
+                    Simply register a new account for free if you don't already have one by clicking
+                    <a href="javascript:void(0);" routerLink="/auth/register">
+                        GET STARTED
+                    </a> . If you
+                    already have an account, just click LOGIN and provide your credentials.
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-col">
+            <div class="panel-heading" role="tab" id="faq-2-heading">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseTwo"
+                        aria-expanded="false" aria-controls="collapseTwo" class="collapsed">
+                        <i class="material-icons">arrow_drop_down_circle</i> Are there any charges for using this
+                        platform?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-2-heading"
+                aria-expanded="false" style="height: 0px;">
+                <div class="panel-body">
+                    Viewing and searching for any debtors is absolutely FREE. Listing a debtor is also free but in order
+                    to
+                    publish the listing for the outside world to see, you will be charged 3% of the amount owed. You
+                    will also be charged 7% of the amount owed in order to unlist the debtor.
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-col">
+            <div class="panel-heading" role="tab" id="faq-3-heading">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseThree"
+                        aria-expanded="false" aria-controls="collapseThree" class="collapsed">
+                        <i class="material-icons">arrow_drop_down_circle</i> Why should I pay to list someone?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-3-heading"
+                aria-expanded="false" style="height: 0px;">
+                <div class="panel-body">
+                    In order to ensure that only authentic information is provided via this platform, we charge a levy
+                    amounting to 10% of the owed amount both for listing and unlisting a debtor. This will discourage
+                    providing any false information that might be posted for malicious purposes.
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-col">
+            <div class="panel-heading" role="tab" id="faq-4-heading">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseFour"
+                        aria-expanded="false" aria-controls="collapseFour" class="collapsed">
+                        <i class="material-icons">arrow_drop_down_circle</i> What is the procedure for unlisting
+                        someone?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-4-heading"
+                aria-expanded="false" style="height: 0px;">
+                <div class="panel-body">
+                    To unlist someone, simply click on the debtor and follow the instructions to pay the unlisting fee
+                    indicated. After successful payment, the debtor will be unlisted.
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-col">
+            <div class="panel-heading" role="tab" id="faq-5-heading">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseFive"
+                        aria-expanded="false" aria-controls="collapseFive" class="collapsed">
+                        <i class="material-icons">arrow_drop_down_circle</i> Are there any legal issues that might
+                        arise from using this platform?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-5-heading"
+                aria-expanded="false" style="height: 0px;">
+                <div class="panel-body">
+                    We highly encorage you to provide authentic information via this platform. Any false information
+                    might result in legal issues and we clearly state in the terms and conditions that we shall not be
+                    held liable in the event of such an occurence.
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-col">
+            <div class="panel-heading" role="tab" id="faq-6-heading">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseSix"
+                        aria-expanded="false" aria-controls="collapseSix" class="collapsed">
+                        <i class="material-icons">arrow_drop_down_circle</i> Is my data safe? And will you expose my
+                        information when I list someone?
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-6-heading"
+                aria-expanded="false" style="height: 0px;">
+                <div class="panel-body">
+                    User data is 100% safe. We value data privacy and we <strong>DO NOT</strong> expose your information
+                    when you list someone.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12"><a class="btn btn-link btn-neutral" href="#"><i class="fa fa-facebook fa-2x"
+                        aria-hidden="true"></i></a><a class="btn btn-link btn-neutral" href="#"><i
+                        class="fa fa-twitter fa-2x" aria-hidden="true"></i></a><a class="btn btn-link btn-neutral"
+                    href="#"><i class="fa fa-google-plus fa-2x" aria-hidden="true"></i></a><a
+                    class="btn btn-link btn-neutral" href="#"><i class="fa fa-instagram fa-2x"
+                        aria-hidden="true"></i></a></div>
+            <div class="col-md-12">
+                <p class="mt-3">Copyright © The List of Shame. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>

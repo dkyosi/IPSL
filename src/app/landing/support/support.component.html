@@ -1,0 +1,136 @@
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#navbar-collapse" aria-expanded="false"></a>
+            <a class="navbar-brand" routerLink="/">The List of Shame</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Call Search -->
+                <li>
+                    <a href="javascript:void(0);" routerLink="/">
+                        HOME
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" routerLink="support">
+                        HELP & SUPPORT
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" routerLink="/auth/register">
+                        GET STARTED
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="btn bg-purple waves-effect login-btn" routerLink="/auth/login">
+                        LOGIN
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="content-section">
+    <div>
+        <h2>Experiencing any difficulties using our platform?</h2>
+    </div>
+
+    <div>
+        <h4>Please leave us a comment and our support team will reach out to you.</h4>
+
+        <div class="row clearfix">
+            <form [formGroup]="supportForm" id="sign_in" (ngSubmit)="sendMessage()">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="form-line" [ngClass]="{'focused error': f.fullName.errors?.required && submitted}">
+                            <input type="text" class="form-control" name="fullName" placeholder="Full Name" autofocus
+                                formControlName="fullName">
+                        </div>
+                        <label id="name-error" class="error" for="fullName"
+                            *ngIf="f.fullName.errors?.required && submitted">Please enter your full name.</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-line"
+                            [ngClass]="{'focused error': f.phoneNumber.errors?.required && submitted}">
+                            <input type="tel" class="form-control" name="phoneNumber" placeholder="Mobile Number"
+                                formControlName="phoneNumber">
+                        </div>
+                        <label id="phone-error" class="error" for="phoneNumber"
+                            *ngIf="f.phoneNumber.errors?.required && submitted">Please enter your mobile number.</label>
+                        <label id="phone-error" class="error" for="phoneNumber"
+                            *ngIf="f.phoneNumber.errors?.invalidPhone && submitted">Please enter a valid mobile
+                            number.</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-line"
+                            [ngClass]="{'focused error': f.emailAddress.errors?.required && submitted}">
+                            <input type="email" class="form-control" name="email" placeholder="Email Address"
+                                formControlName="emailAddress">
+                        </div>
+                        <label id="email-error" class="error" for="email"
+                            *ngIf="f.emailAddress.errors?.required && submitted">Please enter an email
+                            address.</label>
+                        <label id="email-error" class="error" for="email"
+                            *ngIf="f.emailAddress.errors?.email && submitted">Please enter a valid email
+                            address.</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-line" [ngClass]="{'focused error': f.message.errors?.required && submitted}">
+                            <textarea rows="4" class="form-control no-resize" name="message" placeholder="Your message..."
+                                formControlName="message"></textarea>
+                        </div>
+                        <label id="message-error" class="error" for="message"
+                            *ngIf="f.message.errors?.required && submitted">Please enter your message.</label>
+                    </div>
+
+                    <div class="alert alert-danger" *ngIf="errorMessage && !isProcessing">
+                        <strong>Oh snap!</strong> {{errorMessage}}
+                    </div>
+
+                    <div class="alert alert-success" *ngIf="successMessage && !isProcessing">
+                        <strong>Success!</strong> {{successMessage}}
+                    </div>
+
+                    <div style="display: flex; justify-content: center;" *ngIf="isProcessing">
+                        <div class="preloader pl-size-xs">
+                            <div class="spinner-layer pl-purple">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn bg-purple btn-block btn-lg waves-effect" style="margin-top: 15px;">
+                        SEND MESSAGE
+                    </button>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</main>
+
+<footer class="footer-black aa-footer">
+    <div class="container" style="margin: 4rem;">
+        <div class="row text-center">
+            <div class="col-md-12"><a class="btn btn-link btn-neutral" href="#"><i class="fa fa-facebook fa-2x"
+                        aria-hidden="true"></i></a><a class="btn btn-link btn-neutral" href="#"><i
+                        class="fa fa-twitter fa-2x" aria-hidden="true"></i></a><a class="btn btn-link btn-neutral"
+                    href="#"><i class="fa fa-google-plus fa-2x" aria-hidden="true"></i></a><a
+                    class="btn btn-link btn-neutral" href="#"><i class="fa fa-instagram fa-2x"
+                        aria-hidden="true"></i></a></div>
+            <div class="col-md-12">
+                <p class="mt-3">Copyright © The List of Shame. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>

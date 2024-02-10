@@ -1,0 +1,190 @@
+.login-btn {
+    padding-bottom: 6px; 
+    padding-left: 15px; 
+    padding-right: 15px;
+}
+
+.aa-header-content {
+    padding-top: 12rem;
+    padding-bottom: 6rem;
+    /* background: rgba(254, 254, 254, 1); */
+    background: url("../../../assets/images/apple-notebook.jpg");
+    background-position: 50%;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    color: white;
+}
+
+.aa-header-content:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.intro{
+    z-index: 2;
+}
+
+.intro-header {
+    font-size: 42px;
+}
+
+.intro-text{
+    font-size: 18px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.main-section {
+    background: rgba(254, 254, 254, 1);
+    margin: 2rem 4rem;
+}
+
+.cta-section {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    margin-top: 5vh;
+}
+
+.feature-list {
+    margin-left: 5vw;
+}
+
+.top-debtors{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.card {
+    background: transparent !important;
+    min-height: 50px;
+    box-shadow: none;
+    position: relative;
+    margin-bottom: 30px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.how-it-works{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(270deg, #000000 0%, #9C27B0 100%); */
+    background: linear-gradient(270deg, #05052f 0%, #6a0d7a 100%);
+    color: white;
+    margin: 2rem 0px;
+}
+
+.works-list {
+    font-size: 20px;
+    width: 100%;
+    padding: 4rem 8rem;
+    padding-top: 2rem;
+}
+
+.faqs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(254, 254, 254, 1);
+    margin: 2rem 4rem;
+    padding-bottom: 3rem;
+}
+
+.faq-list {
+    width: 100%; 
+    /* padding-left: 4rem; 
+    padding-right: 4rem; */
+}
+
+.footer {
+    margin: 4rem;
+}
+
+@media (max-width: 767px){
+    .navbar-collapse {
+        padding-right: 15px;
+        padding-left: 15px;
+        overflow-x: visible;
+        -webkit-overflow-scrolling: touch;
+        border-top: 1px solid transparent;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+        padding-bottom: 15px;
+    }
+
+    .navbar-brand {
+        text-align: center;
+    }
+
+    .aa-header-content {
+        padding-top: 8rem;
+        padding-bottom: 6rem;
+    }
+
+    .image-section {
+        display: none;
+    }
+
+    .intro-header {
+        font-size: 32px;
+    }
+
+    .main-section {
+        margin: 5px;
+    }
+
+    .top-debtors {
+        padding: 5px;
+    }
+
+    .card .body {
+        font-size: 14px;
+        color: #555;
+        padding: 20px 10px;
+    }
+
+    .table-responsive {
+        min-height: 10rem;
+        border: none;
+    }
+
+    .how-it-works{
+        margin: 5px;
+        padding: 2px 10px;
+    }
+
+    .faqs{
+        margin: 5px;
+        padding: 2px 10px;
+    }
+
+    .works-list {
+        padding: 2px;
+        font-size: 15px;
+    }
+
+    section > h2 {
+        font-size: 20px;
+    }
+
+}
